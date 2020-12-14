@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
+// todo wiadomo co
+import Info from "./components/Info/Info";
+import Navbar from "./components/Navbar/Navbar";
+import Race from "./components/Race/Race";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      <div className='container mt-4' style={{ color: "#C9D1D9" }}>
+        <div className='row'>
+          <div className='col-md-8'>
+            <Info />
+            <Race />
+          </div>
+          <div className='col-md-4'>
+            <h2>Assets</h2>
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
