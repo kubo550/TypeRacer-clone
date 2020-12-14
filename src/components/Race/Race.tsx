@@ -62,7 +62,7 @@ const Race = () => {
             );
           })}
         </p>
-        {/* Create Component for it */}
+        {/* Create Component for  */}
         <input
           type='text'
           style={{ width: "100%", marginTop: "10px", fontSize: "1.15rem" }}
