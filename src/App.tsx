@@ -1,9 +1,5 @@
 import React from "react";
-
-// todo wiadomo co
-import Info from "./components/Info/Info";
-import Navbar from "./components/Navbar/Navbar";
-import Race from "./components/Race/Race";
+import { Info, Navbar, Race } from "./components";
 
 const App = () => {
   return (
