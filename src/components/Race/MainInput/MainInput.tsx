@@ -24,7 +24,6 @@ const MainInput: FC<mainInputProps> = ({
   currentWord,
   add,
   setInputValue,
-  active,
 }) => {
   return (
     <StyledInput
