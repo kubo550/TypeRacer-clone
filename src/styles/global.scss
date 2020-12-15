@@ -1,3 +1,6 @@
+$correct: #99cc00;
+$wrong: #f0a3a3;
+
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,300;1,400&display=swap");
 
 * {
@@ -16,13 +19,14 @@ span.active {
   color: #fff;
   border-bottom: 1px solid #fff;
   padding-bottom: 2px;
-  // text-decoration: underline;
+  .correct {
+    color: $correct;
+  }
+  .wrong {
+    color: $wrong;
+  }
 }
 
-span.correct {
-  color: #99cc00;
-}
-
-span.wrong {
-  color: #f0a3a3;
+.past-correct {
+  color: $correct;
 }
