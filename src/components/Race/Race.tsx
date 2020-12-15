@@ -1,22 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Player from "./Player/Player";
 import SingleWord from "./SingleWord/SingleWord";
 
-const Road = styled.div`
-  width: 100%;
-  height: 4px;
-  background-color: white;
-  padding-right: 40px;
-  ::after {
-    content: "";
-    position: absolute;
-    width: 46px;
-    right: 15px;
-    height: 4px;
-    background-color: #6e40c9;
-  }
-`;
 const BorderedDiv = styled.div`
   margin-top: 20px;
   background-color: #0d1117;
@@ -24,12 +10,16 @@ const BorderedDiv = styled.div`
   border-radius: 5px;
   padding: 20px;
 `;
-const TEXT = "Ja to, proszę pana, mam bardzo dobre mam połączenie.";
-//  Wstaję rano za piętnaście trzecia. Latem to już widno. Za piętnaście trzecia jestem ogolony, bo golę się wieczorem. Śniadanie jadam na kolację. Tylko wstaję i wychodzę.";
+const TextContainer = styled.p`
+  font-size: 1.32rem;
+`;
+const TEXT =
+  "Potem dał mi Pan i daje tak wielkie zaufanie do kapłanów, którzy żyją według zasad świętego Kościoła Rzymskiego ze względu na ich godność kapłańską, że chociaż prześladowaliby mnie, chcę się do nich zwracać.";
+
 const getPlayableArray = (text: string) =>
   text.split(/\s/).map((word, i, arr) => (i === arr.length - 1 ? word : word + " "));
 
-export type correctWorsType = string[];
+export type correctWorsType = number[];
 
 const Race = () => {
   // const [playable] = useState(true);
@@ -46,23 +36,22 @@ const Race = () => {
   return (
     <div>
       <h5>{message}</h5>
-      <Player distance={(index / textArray.length) * 100} />
-      <Road />
+      <Player distance={index / textArray.length} />
       <BorderedDiv>
-        <p style={{ textAlign: "justify", fontSize: "1.22rem", wordSpacing: "2px" }}>
-          {textArray.map((word, i) => {
-            return (
-              <SingleWord
-                key={i}
-                word={word}
-                currentWord={textArray[index]}
-                inputValue={inputValue}
-                correctWords={correctWords}
-              />
-            );
-          })}
-        </p>
-        {/* Create Component for  */}
+        <TextContainer>
+          {textArray.map((word, i) => (
+            <SingleWord
+              key={i}
+              index={i}
+              isCurrent={index === i}
+              word={word}
+              currentWord={textArray[index]}
+              inputValue={inputValue}
+              correctWords={correctWords}
+            />
+          ))}
+        </TextContainer>
+        {/* Create Component for It */}
         <input
           type='text'
           style={{ width: "100%", marginTop: "10px", fontSize: "1.15rem" }}
@@ -73,7 +62,7 @@ const Race = () => {
             if (target.value === textArray[index]) {
               nextIndex();
               setInputValue("");
-              correctWords.push(textArray[index]);
+              correctWords.push(index);
             } else {
               setInputValue(target.value);
             }
