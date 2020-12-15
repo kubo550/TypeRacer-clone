@@ -30,3 +30,17 @@ span.active {
 .past-correct {
   color: $correct;
 }
+
+.timer-wrapper {
+  margin-top: 60px;
+}
+.time {
+  font-size: 30px;
+}
+.right {
+  margin-left: 20px;
+}
+.unit {
+  margin-left: 10px;
+  font-size: 16px;
+}

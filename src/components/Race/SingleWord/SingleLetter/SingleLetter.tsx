@@ -9,19 +9,17 @@ const SingleLetter: FC<singleLetterProps> = ({
   singleLetter,
   currentWord,
 }) => {
-  return (
-    <span
-      className={
-        currentLetter === singleLetter && currentWord.includes(currentLetter)
-          ? "correct"
-          : currentLetter && currentLetter !== singleLetter
-          ? "wrong"
-          : ""
-      }
-    >
-      {singleLetter}
-    </span>
-  );
+  const getClassName = () => {
+    if (currentLetter === singleLetter && currentWord.includes(currentLetter)) {
+      // console.log("nie ma błedu");
+      return "correct";
+    } else if (currentLetter && currentLetter !== singleLetter) {
+      // console.log("jest blad");
+
+      return "wrong";
+    }
+  };
+  return <span className={getClassName()}>{singleLetter}</span>;
 };
 
 export default SingleLetter;
