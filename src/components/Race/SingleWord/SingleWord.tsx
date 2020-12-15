@@ -1,10 +1,12 @@
 import React, { FC } from "react";
-
+import SingleLetter from "./SingleLetter/SingleLetter";
 interface singleWordProps {
   word: string;
   currentWord: string;
   inputValue: string;
-  correctWords: string[];
+  correctWords: number[];
+  index: number;
+  isCurrent: boolean;
 }
 
 const SingleWord: FC<singleWordProps> = ({
@@ -12,26 +14,23 @@ const SingleWord: FC<singleWordProps> = ({
   currentWord,
   inputValue,
   correctWords,
-}) => {
-  return (
-    <span className={word === currentWord ? "active" : ""}>
-      {word.split("").map((letter, i) => {
-        type singleWord = string;
-        const current: singleWord = [...inputValue][i];
-
-        return (
-          <span
-            key={i}
-            className={
-              current === letter && currentWord.includes(current) ? "correct" : ""
-            }
-          >
-            {letter}
-          </span>
-        );
-      })}
-    </span>
-  );
-};
+  index,
+  isCurrent,
+}) => (
+  <span
+    className={
+      isCurrent ? "active" : correctWords.every(num => num < index) ? "" : "past-correct"
+    }
+  >
+    {word.split("").map((singleLetter, i) => (
+      <SingleLetter
+        key={i}
+        singleLetter={singleLetter}
+        currentLetter={[...inputValue][i]}
+        currentWord={currentWord}
+      />
+    ))}
+  </span>
+);
 
 export default SingleWord;
