@@ -29,8 +29,6 @@ const Race = () => {
   const [message] = useState("The race is about to start!");
   const [correctWords, setCorrectWords] = useState<correctWorsType>([]);
 
-  console.log(correctWords);
-
   const nextIndex = () => setIndex(prev => prev + 1);
 
   return (
@@ -62,7 +60,7 @@ const Race = () => {
             if (target.value === textArray[index]) {
               nextIndex();
               setInputValue("");
-              correctWords.push(index);
+              setCorrectWords(prev => [...prev, index]);
             } else {
               setInputValue(target.value);
             }
