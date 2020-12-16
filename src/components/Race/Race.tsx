@@ -16,7 +16,8 @@ const BorderedDiv = styled.div`
 const TextContainer = styled.p`
   font-size: 1.32rem;
 `;
-const TEXT = "potem dal mi pan i daje tak wielkie zaufanie do kaplanow.";
+const TEXT =
+  "I then divided the words by the time in seconds to see how many words per second. Then, I multiplied by 60 to get the number of words that it would be in one minute. Let me know if this is what you were looking for.";
 
 const getPlayableArray = (text: string) =>
   text.split(/\s/).map((word, i, arr) => (i === arr.length - 1 ? word : word + " "));
@@ -28,24 +29,31 @@ enum gameStateEnum {
   play = "Go!",
   end = "The race has ended.",
 }
+const DELAY = 3;
 
 const Race = () => {
   const [textArray] = useState(getPlayableArray(TEXT));
   const [index, setIndex] = useState(0);
   const [inputValue, setInputValue] = useState("");
-  const [gameState, setGameState] = useState(gameStateEnum.play);
+  const [gameState, setGameState] = useState(gameStateEnum.init);
   const [correctWords, setCorrectWords] = useState<correctWorsType>([]);
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState(DELAY * -1);
+
+  useEffect(() => {
+    setTimeout(() => setGameState(gameStateEnum.play), DELAY * 1000);
+    setInterval(() => setTime(prev => prev + 1), 1000);
+  }, []);
 
   useEffect(() => {
     if (index / textArray.length === 1) {
       setGameState(gameStateEnum.end);
+      console.log(time);
+      const chars = [...textArray].map(word => [...word]).flat();
+      const AVGLettersInWord = 5;
+      const WPM = (((chars.length / time) * 60) / AVGLettersInWord).toFixed(1);
+      console.log("Twoje WPM: " + WPM);
     }
   }, [index, textArray]);
-
-  useEffect(() => {
-    setInterval(() => setTime(prev => prev + 1), 1000);
-  }, []);
 
   const addToCorrectWords = (index: number) => {
     setIndex(prev => prev + 1);
