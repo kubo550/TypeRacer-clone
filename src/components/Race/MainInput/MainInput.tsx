@@ -5,18 +5,15 @@ interface mainInputProps {
   inputValue: string;
   currentWord: string;
   active: boolean;
-  isError?: boolean;
-
   add: () => void;
   setInputValue: (val: string) => void;
 }
 
-const StyledInput = styled.input<{ isError?: boolean }>`
+const StyledInput = styled.input<{ active?: boolean }>`
   width: 100%;
   margin-top: 10px;
   font-size: 1.15rem;
-  /*                                                   !red  */
-  background-color: ${({ isError }) => (isError ? "#f0a3a3" : "")};
+  background-color: ${({ active }) => (!active ? "grey" : "white")};
 `;
 
 const MainInput: FC<mainInputProps> = ({
@@ -24,6 +21,7 @@ const MainInput: FC<mainInputProps> = ({
   currentWord,
   add,
   setInputValue,
+  active,
 }) => {
   return (
     <StyledInput
@@ -31,15 +29,19 @@ const MainInput: FC<mainInputProps> = ({
       placeholder='Type the above text here when the race begins'
       value={inputValue}
       autoFocus
-      disabled={false}
-      onChange={({ target }) => {
-        if (target.value === currentWord) {
-          setInputValue("");
-          add();
-        } else {
-          setInputValue(target.value);
-        }
-      }}
+      active={active}
+      onChange={
+        active
+          ? ({ target }) => {
+              if (target.value === currentWord) {
+                setInputValue("");
+                add();
+              } else {
+                setInputValue(target.value);
+              }
+            }
+          : () => {}
+      }
     />
   );
 };
