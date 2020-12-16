@@ -1,3 +1,8 @@
+export const getPlayableArray = (text: string) =>
+    text.split(/\s/).map((word, i, arr) => (i === arr.length - 1 ? word : word + " "));
+
+
+
 export const countStats = (arr1: number[]) => {
     if (!arr1.length) return [0, 0, 0, 0];
     const arr = [...arr1];
