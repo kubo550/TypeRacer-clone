@@ -32,7 +32,7 @@ const Player: FC<playerProps> = ({ distance }) => {
         style={{ marginLeft: `${distance * 100 - 7}%` }}
         title='Powerty'
       />
-      <Road />
+      <Road className='mb-4' />
     </>
   );
 };
