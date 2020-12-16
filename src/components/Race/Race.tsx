@@ -1,10 +1,8 @@
 import React, { useState, useEffect, FC } from "react";
+import { MainInput, Player, SingleWord, Timmer } from "./";
 import styled from "styled-components";
-import MainInput from "./MainInput/MainInput";
-import Player from "./Player/Player";
-import SingleWord from "./SingleWord/SingleWord";
-import Timmer from "./Timmer/Timmer";
 
+import { getPlayableArray } from "../../helper";
 export const BorderedDiv = styled.div<{ borderColor?: string }>`
   margin-top: 20px;
   background-color: #0d1117;
@@ -18,9 +16,6 @@ const TextContainer = styled.p`
 `;
 const TEXT = "hobbit byl bardzo zamoznym hobbitem a nazywal sie baggins.";
 //  bagginsowie zyli w okolicy pagorka od niepamietnych czasow i cieszyli sie powszechnym szacunkiem nie tylko dlatego ze prawie wszyscy byli bogaci lecz także dlatego ze nigdy nie miewali przygód i nie sprawiali niespodzianek.";
-
-const getPlayableArray = (text: string) =>
-  text.split(/\s/).map((word, i, arr) => (i === arr.length - 1 ? word : word + " "));
 
 export type correctWorsType = number[];
 
