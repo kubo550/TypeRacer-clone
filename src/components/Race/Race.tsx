@@ -5,10 +5,10 @@ import Player from "./Player/Player";
 import SingleWord from "./SingleWord/SingleWord";
 import Timmer from "./Timmer/Timmer";
 
-const BorderedDiv = styled.div`
+export const BorderedDiv = styled.div<{ borderColor?: string }>`
   margin-top: 20px;
   background-color: #0d1117;
-  border: 1px solid #6e40c9;
+  border: 1px solid ${({ borderColor = "#6e40c9" }) => borderColor};
   border-radius: 5px;
   padding: 20px;
 `;
@@ -17,7 +17,7 @@ const TextContainer = styled.p`
   font-size: 1.32rem;
 `;
 const TEXT =
-  "I then divided the words by the time in seconds to see how many words per second. Then, I multiplied by 60 to get the number of words that it would be in one minute. Let me know if this is what you were looking for.";
+  "hobbit byl bardzo zamoznym hobbitem a nazywał się baggins. bagginsowie zyli w okolicy pagorka od niepamietnych czasow i cieszyli sie powszechnym szacunkiem nie tylko dlatego ze prawie wszyscy byli bogaci lecz także dlatego ze nigdy nie miewali przygód i nie sprawiali niespodzianek.";
 
 const getPlayableArray = (text: string) =>
   text.split(/\s/).map((word, i, arr) => (i === arr.length - 1 ? word : word + " "));
