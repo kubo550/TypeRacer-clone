@@ -55,7 +55,6 @@ const Race: FC<raceProps> = ({ addToAVG }) => {
       const AVGLettersInWord = 5;
       const WPM = ((chars.length / time) * 60) / AVGLettersInWord;
       addToAVG(WPM);
-      console.log("Tw o je WPM: " + WPM);
     }
   }, [index, textArray, addToAVG]);
 
