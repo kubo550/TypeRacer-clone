@@ -14,7 +14,8 @@ export const BorderedDiv = styled.div<{ borderColor?: string }>`
 const TextContainer = styled.p`
   font-size: 1.32rem;
 `;
-const TEXT = "hobbit byl bardzo zamoznym hobbitem a nazywal sie baggins.";
+const TEXT =
+  "Pan bowiem rzekł do Mojżesza tymi słowami: Nie będziesz spisywał pokolenia Lewiego według liczby głów i nie policzysz ich razem z resztą Izraelitów. Powierzysz natomiast lewitom troskę o Przybytek Świadectwa, o wszystkie jego sprzęty i cokolwiek do niego należy; oni będą nosić zarówno Przybytek, jak i wszystkie jego sprzęty, będą mu służyć dokoła.";
 //  bagginsowie zyli w okolicy pagorka od niepamietnych czasow i cieszyli sie powszechnym szacunkiem nie tylko dlatego ze prawie wszyscy byli bogaci lecz także dlatego ze nigdy nie miewali przygód i nie sprawiali niespodzianek.";
 
 export type correctWorsType = number[];

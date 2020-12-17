@@ -26,6 +26,7 @@ const MainInput: FC<mainInputProps> = ({
   return (
     <StyledInput
       type='text'
+      className='mb-2'
       placeholder='Type the above text here when the race begins'
       value={inputValue}
       autoFocus

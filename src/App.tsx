@@ -15,6 +15,7 @@ const App = () => {
             <Race addToAVG={addToAVG} />
           </div>
           <div className='col-md-4 text-center'>
+            <h5 className='text-right'>Type Racer - Clone</h5>
             <img
               style={{ width: "100%" }}
               src='https://cdn.pixabay.com/photo/2016/01/13/16/29/typewriter-1138293_960_720.png'
