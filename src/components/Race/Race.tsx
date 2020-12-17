@@ -21,7 +21,7 @@ const TEXT =
 export type correctWorsType = number[];
 
 enum GameStateEnum {
-  init = "The race is about to start!",
+  init = "The race is about to start.",
   play = "Go!",
   end = "The race has ended.",
 }
