@@ -33,12 +33,12 @@ const MainInput: FC<mainInputProps> = ({
       active={active}
       onChange={
         active
-          ? ({ target }) => {
-              if (target.value === currentWord) {
+          ? ({ target: { value } }) => {
+              if (value === currentWord) {
                 setInputValue("");
                 add();
               } else {
-                setInputValue(target.value);
+                setInputValue(value);
               }
             }
           : () => {}
