@@ -1,8 +1,9 @@
-import React, { useState, useEffect, FC } from "react";
+import React, { useState, useEffect, FC, useRef } from "react";
 import { MainInput, Player, SingleWord, Timmer } from "./";
 import styled from "styled-components";
 
 import { getPlayableArray } from "../../helper";
+import EndRaceInfo from "./EndRaceInfo/EndRaceInfo";
 export const BorderedDiv = styled.div<{ borderColor?: string }>`
   margin-top: 20px;
   background-color: #0d1117;
@@ -14,9 +15,8 @@ export const BorderedDiv = styled.div<{ borderColor?: string }>`
 const TextContainer = styled.p`
   font-size: 1.32rem;
 `;
-const TEXT =
-  "Pan bowiem rzekł do Mojżesza tymi słowami: Nie będziesz spisywał pokolenia Lewiego według liczby głów i nie policzysz ich razem z resztą Izraelitów. Powierzysz natomiast lewitom troskę o Przybytek Świadectwa, o wszystkie jego sprzęty i cokolwiek do niego należy; oni będą nosić zarówno Przybytek, jak i wszystkie jego sprzęty, będą mu służyć dokoła.";
-//  bagginsowie zyli w okolicy pagorka od niepamietnych czasow i cieszyli sie powszechnym szacunkiem nie tylko dlatego ze prawie wszyscy byli bogaci lecz także dlatego ze nigdy nie miewali przygód i nie sprawiali niespodzianek.";
+const TEXT = "Pan bowiem rzekł do Mojżesza tymi słowami:";
+const TEXT1 = "Nie będziesz spisywał pokolenia Lewiego według liczby";
 
 export type correctWorsType = number[];
 
@@ -28,21 +28,30 @@ enum GameStateEnum {
 interface raceProps {
   addToAVG: (wpm: number) => void;
 }
+
 const DELAY = 3;
 
 const Race: FC<raceProps> = ({ addToAVG }) => {
-  const [textArray] = useState(getPlayableArray(TEXT));
+  const [textArray, setTextArray] = useState(getPlayableArray(TEXT));
   const [index, setIndex] = useState(0);
   const [inputValue, setInputValue] = useState("");
   const [gameState, setGameState] = useState(GameStateEnum.init);
   const [correctWords, setCorrectWords] = useState<correctWorsType>([]);
   const [time, setTime] = useState(DELAY * -1);
+  const [increment, setIncrement] = useState<1 | 0>(1);
+  const inputRef = useRef<any>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(prev => prev + increment);
+      inputRef.current.focus();
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [increment]);
 
   useEffect(() => {
     setTimeout(() => setGameState(GameStateEnum.play), DELAY * 1000);
-    const interval = setInterval(() => setTime(prev => prev + 1), 1000);
-    return () => clearInterval(interval);
-  }, []);
+  }, [textArray]);
 
   useEffect(() => {
     if (index / textArray.length === 1) {
@@ -51,16 +60,27 @@ const Race: FC<raceProps> = ({ addToAVG }) => {
       const AVGLettersInWord = 5;
       const WPM = ((chars.length / time) * 60) / AVGLettersInWord;
       addToAVG(WPM);
+      setIncrement(0);
     }
-  }, [index, textArray, addToAVG]);
+  }, [index, textArray, addToAVG, setIncrement, time]);
 
   const addToCorrectWords = (index: number) => {
     setIndex(prev => prev + 1);
     setCorrectWords(prev => [...prev, index]);
   };
 
+  const restartGame = (text: string) => {
+    setIndex(0);
+    setTime(DELAY * -1);
+    setIncrement(1);
+    setInputValue("");
+    setGameState(GameStateEnum.init);
+    setCorrectWords([]);
+    setTextArray(getPlayableArray(text));
+  };
+
   return (
-    <div>
+    <>
       <Timmer time={time} />
       <h5>{gameState}</h5>
       <Player distance={index / textArray.length} />
@@ -79,6 +99,7 @@ const Race: FC<raceProps> = ({ addToAVG }) => {
           ))}
         </TextContainer>
         <MainInput
+          inputRef={inputRef}
           inputValue={inputValue}
           currentWord={textArray[index]}
           add={() => addToCorrectWords(index)}
@@ -86,7 +107,10 @@ const Race: FC<raceProps> = ({ addToAVG }) => {
           active={gameState === GameStateEnum.play}
         />
       </BorderedDiv>
-    </div>
+      {gameState === GameStateEnum.end && (
+        <EndRaceInfo restartGame={restartGame} currentText={TEXT} nextText={TEXT1} />
+      )}
+    </>
   );
 };
 
