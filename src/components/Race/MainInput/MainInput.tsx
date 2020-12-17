@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import styled from "styled-components";
 
 interface mainInputProps {
+  inputRef: React.MutableRefObject<HTMLInputElement | null>;
   inputValue: string;
   currentWord: string;
   active: boolean;
@@ -17,6 +18,7 @@ const StyledInput = styled.input<{ active?: boolean }>`
 `;
 
 const MainInput: FC<mainInputProps> = ({
+  inputRef,
   inputValue,
   currentWord,
   add,
@@ -25,6 +27,7 @@ const MainInput: FC<mainInputProps> = ({
 }) => {
   return (
     <StyledInput
+      ref={inputRef}
       type='text'
       className='mb-2'
       placeholder='Type the above text here when the race begins'
