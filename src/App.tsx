@@ -3,7 +3,7 @@ import { Info, Navbar, Race, Stats } from "./components";
 
 const App = () => {
   // Words Per minute Array
-  const [WPMs, setWPMs] = useState<number[]>([]);
+  const [wordsPerMinute, setWPMs] = useState<number[]>([]);
   const addToAVG = useCallback((wpm: number) => setWPMs(prev => [...prev, wpm]), []);
   return (
     <div>
@@ -21,7 +21,7 @@ const App = () => {
               src='https://cdn.pixabay.com/photo/2016/01/13/16/29/typewriter-1138293_960_720.png'
               alt='Maszyna do pisania'
             />
-            <Stats wordsPerMinute={WPMs} />
+            <Stats wordsPerMinute={wordsPerMinute} />
           </div>
         </div>
       </div>
