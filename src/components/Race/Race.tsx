@@ -1,42 +1,20 @@
 import React, { useState, useEffect, FC, useRef } from "react";
-import { MainInput, Player, SingleWord, Timmer } from "./";
-import styled from "styled-components";
-
+import { MainInput, Player, SingleWord, Timmer, EndRaceInfo } from "./";
 import { getPlayableArray } from "../../helper";
-import EndRaceInfo from "./EndRaceInfo/EndRaceInfo";
-export const BorderedDiv = styled.div<{ borderColor?: string }>`
-  margin-top: 20px;
-  background-color: #0d1117;
-  border: 1px solid ${({ borderColor = "#6e40c9" }) => borderColor};
-  border-radius: 5px;
-  padding: 20px;
-`;
+import { CorrectWorsType, RaceProps, GameStateEnum } from "./types";
+import { BorderedDiv, TextContainer } from "./layout";
 
-const TextContainer = styled.p`
-  font-size: 1.32rem;
-`;
-const TEXT = "Pan bowiem rzekł do Mojżesza tymi słowami:";
-const TEXT1 = "Nie będziesz spisywał pokolenia Lewiego według liczby";
-
-export type correctWorsType = number[];
-
-enum GameStateEnum {
-  init = "The race is about to start.",
-  play = "Go!",
-  end = "The race has ended.",
-}
-interface raceProps {
-  addToAVG: (wpm: number) => void;
-}
-
+const TEXT1 = "nie bedziesz spisywal pokolenia lewiego wedlug liczby.";
+const TEXT =
+  "Potem do położnych u kobiet hebrajskich, z których jedna nazywała się Szifra, a druga Pua, powiedział król egipski te słowa : Jeśli będziecie przy porodach kobiet hebrajskich, to patrzcie na płeć.";
 const DELAY = 3;
 
-const Race: FC<raceProps> = ({ addToAVG }) => {
+const Race: FC<RaceProps> = ({ addToAVG }) => {
   const [textArray, setTextArray] = useState(getPlayableArray(TEXT));
   const [index, setIndex] = useState(0);
   const [inputValue, setInputValue] = useState("");
   const [gameState, setGameState] = useState(GameStateEnum.init);
-  const [correctWords, setCorrectWords] = useState<correctWorsType>([]);
+  const [correctWords, setCorrectWords] = useState<CorrectWorsType>([]);
   const [time, setTime] = useState(DELAY * -1);
   const [increment, setIncrement] = useState<1 | 0>(1);
   const inputRef = useRef<any>(null);
