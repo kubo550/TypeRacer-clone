@@ -1,6 +1,9 @@
 $correct: #99cc00;
 $wrong: #f0a3a3;
 
+$pourple: #8957e5;
+$oragne: #f0883e;
+
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,300;1,400&display=swap");
 
 * {
@@ -43,4 +46,24 @@ span.active {
 .unit {
   margin-left: 10px;
   font-size: 16px;
+}
+
+.btn-outline-orange {
+  border-color: $oragne;
+  color: $oragne;
+  transition: background-color 0.3s;
+  &:hover {
+    color: white;
+    background-color: $oragne;
+  }
+}
+
+.btn-outline-pourple {
+  border-color: $pourple;
+  color: $pourple;
+  transition: background-color 0.3s;
+  &:hover {
+    color: white;
+    background-color: $pourple;
+  }
 }
