@@ -14,10 +14,11 @@ interface statsProps {
 }
 
 const Stats: FC<statsProps> = ({ wordsPerMinute }) => {
+  // todo: contiunnee
   const [best, last, avg, avgLast10] = countStats(wordsPerMinute);
 
   return (
-    <BorderedDiv borderColor='#388BFC'>
+    <BorderedDiv className='mb-5' borderColor='#388BFC'>
       <h4>Your Stats</h4>
       <Grid>
         <div>
