@@ -1,7 +1,7 @@
 # Type Racer Clone
 
 It is my idea of Type Racer I created for learning modern javascript.
-App created with **TypeScript** **React**
+App created with **TypeScript** and **React hooks** 
 
 
 ## Getting Started with Create React App
