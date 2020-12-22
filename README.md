@@ -1,4 +1,4 @@
-
+# Type Racer Clone
 
 ## Getting Started with Create React App
 
