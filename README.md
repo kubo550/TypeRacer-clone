@@ -1,6 +1,6 @@
 # Type Racer Clone
 
-It is my idea of Type Racer I created for learning React and Typescript
+It is my idea of Type Racer I created for learning **React** and **Typescript**
 
 ## Getting Started with Create React App
 
