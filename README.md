@@ -1,6 +1,6 @@
 # Type Racer Clone
 
-It is my private Type Racer 
+It is my idea of Type Racer I created for learning 
 
 ## Getting Started with Create React App
 
