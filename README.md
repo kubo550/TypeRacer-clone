@@ -3,6 +3,8 @@
 It is my idea of Type Racer I created for learning modern javascript.
 App created with **TypeScript** and **React hooks** 
 
+## Preview
+![game](https://raw.githubusercontent.com/kubo550/TypeRacer-clone/master/trc-pv1.png)
 
 ## Getting Started with Create React App
 
