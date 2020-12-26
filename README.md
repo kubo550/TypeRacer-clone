@@ -3,7 +3,7 @@
 It is my idea of Type Racer I created for learning modern javascript.
 App created with **TypeScript** and **React hooks** 
 
-123456789
+1234567890
 
 ## Preview
 
