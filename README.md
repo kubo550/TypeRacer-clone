@@ -1,5 +1,5 @@
 # Type Racer Clone
-1235556
+1235556t
 It is my idea of Type Racer I created for learning modern javascript.
 App created with **TypeScript** and **React hooks** 
 
