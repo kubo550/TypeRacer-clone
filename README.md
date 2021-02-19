@@ -1,7 +1,16 @@
 # Type Racer Clone
 
 It is my idea of Type Racer I created for learning modern javascript.
-App created with **TypeScript** and **React hooks** 
+App created with **TypeScript** and **React hooks**
+
+## Tech Stack
+
+![TypeScript](https://img.shields.io/badge/-TypeScript-05122A?style=flat&logo=typescript)&nbsp;
+![React](https://img.shields.io/badge/-React-05122A?style=flat&logo=react)&nbsp;
+
+![SCSS](https://img.shields.io/badge/-SCSS-05122A?style=flat&logo=SASS)&nbsp;
+![Material UI](https://img.shields.io/badge/-Material_UI-05122A?style=flat&logo=material-ui)&nbsp;
+![Styled Components](https://img.shields.io/badge/-styled_components-05122A?style=flat&logo=styled-components)&nbsp;
 
 ## Preview
 
