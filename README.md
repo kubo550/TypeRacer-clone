@@ -7,6 +7,7 @@ App created with **TypeScript** and **React hooks**
 
 ![TypeScript](https://img.shields.io/badge/-TypeScript-05122A?style=flat&logo=typescript)&nbsp;
 ![React](https://img.shields.io/badge/-React-05122A?style=flat&logo=react)&nbsp;
+![Rest API](https://img.shields.io/badge/-rest_api-05122A?style=flat&logo=API)
 
 ![SCSS](https://img.shields.io/badge/-SCSS-05122A?style=flat&logo=SASS)&nbsp;
 ![Material UI](https://img.shields.io/badge/-Material_UI-05122A?style=flat&logo=material-ui)&nbsp;
