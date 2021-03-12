@@ -1,4 +1,9 @@
-# Type Racer Clone
+## This is the old version!
+
+Click [here](https://github.com/kubo550/type-racer-nextjs) i've done this one more time with better stack and better code.
+
+
+## Type Racer Clone
 
 It is my idea of Type Racer I created for learning modern javascript.
 App created with **TypeScript** and **React hooks**.
