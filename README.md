@@ -1,6 +1,6 @@
 ## This is the old version!
 
-Click [here](https://github.com/kubo550/type-racer-nextjs) i've done this one more time with better stack and better code.
+Click [here](https://github.com/kubo550/type-racer-clone) i've done this one more time with better stack and better code.
 
 
 ## Type Racer Clone
